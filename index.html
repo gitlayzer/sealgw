@@ -1,128 +1,917 @@
 <!DOCTYPE html>
-<html lang="zh"> <head>
+<html lang="zh">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">Sealgw - 云原生高性能 4/7 层网关 (开发中)</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="img/favicon.ico" type="image/svg+xml">
 </head>
 <body data-theme="light">
-<header>
-    <div class="container">
-        <div class="logo">
-            <img src="img/sealgw.png" alt="Sealgw Logo" height="30">
-            <span>sealgw</span>
+    <div class="global-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#hero" data-i18n="nav.home">首页</a></li>
-                <li><a href="#features" data-i18n="nav.features">核心特性</a></li>
-                <li><a href="#advantages" data-i18n="nav.design_concept">设计理念</a></li>
-                <li><a href="#status" data-i18n="nav.status">项目状态</a></li>
-                <li><a href="#contact" data-i18n="nav.contact">联系</a></li>
+    </div>
+
+<header class="modern-header">
+    <div class="header-container">
+        <div class="logo-section">
+            <div class="logo-wrapper">
+                <img src="img/sealgw.png" alt="Sealgw Logo" class="logo-image">
+                <span class="logo-text">sealgw</span>
+            </div>
+            <div class="version-badge">dev</div>
+        </div>
+
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#hero" class="nav-link" data-i18n="nav.home">首页</a></li>
+                <li class="nav-item"><a href="#features" class="nav-link" data-i18n="nav.features">核心特性</a></li>
+                <li class="nav-item"><a href="#architecture" class="nav-link" data-i18n="nav.architecture">架构设计</a></li>
+                <li class="nav-item"><a href="#performance" class="nav-link" data-i18n="nav.performance">性能指标</a></li>
+                <li class="nav-item"><a href="#connection-flow" class="nav-link" data-i18n="nav.demo">连接演示</a></li>
+                <li class="nav-item"><a href="#config-generator" class="nav-link" data-i18n="nav.generator">配置生成器</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link" data-i18n="nav.contact">联系</a></li>
             </ul>
         </nav>
-        <button id="lang-toggle" class="nav-btn" aria-label="Toggle Language" data-i18n="lang_code">EN</button>
-        <button id="theme-toggle" class="nav-btn" aria-label="Toggle Dark Mode">🌙</button>
-        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+        <div class="header-controls">
+            <button id="lang-toggle" class="control-btn language-btn" aria-label="Toggle Language" data-i18n="lang_code">EN</button>
+            <button id="theme-toggle" class="control-btn theme-btn" aria-label="Toggle Dark Mode">🌙</button>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
     </div>
 </header>
 
-<main>
+<main class="main-content">
+    <!-- Hero Section -->
     <section id="hero" class="hero-section">
-        <div class="container">
-            <h1 class="animate-on-scroll" data-i18n="hero.title">云原生高性能 4/7 层混合网关</h1>
-            <p class="animate-on-scroll" data-i18n="hero.subtitle">
-                Sealgw (开发中) —— 为 Sealos 平台构建，以极致安全和内核级速度，统一您的南北向和东西向流量。
-            </p>
-            <div class="btn-group animate-on-scroll">
-                <a href="https://github.com/gitlayzer/sealgw/tree/master/docs" target="_blank" class="btn primary-btn" data-i18n="hero.docs_btn">查看开发文档</a>
-                <a href="https://github.com/gitlayzer/sealgw" target="_blank" class="btn secondary-btn" data-i18n="hero.repo_btn">GitHub Repo</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-text">🚀 Next-Generation Gateway</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-gradient" data-i18n="hero.title">云原生高性能 4/7 层混合网关</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">
+                    Sealgw (开发中) —— 为 Sealos 平台构建，以极致安全和内核级速度，统一您的南北向和东西向流量。
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10M+</div>
+                        <div class="stat-label" data-i18n="hero.stats.rps">并发连接</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;1ms</div>
+                        <div class="stat-label" data-i18n="hero.stats.latency">延迟</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.99%</div>
+                        <div class="stat-label" data-i18n="hero.stats.uptime">可用性</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="https://github.com/gitlayzer/sealgw/tree/master/docs" target="_blank" class="btn-primary" data-i18n="hero.docs_btn">
+                        <span data-i18n="hero.docs_text">查看开发文档</span>
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15,3 21,3 21,9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/gitlayzer/sealgw" target="_blank" class="btn-secondary" data-i18n="hero.repo_btn">
+                        <span data-i18n="hero.repo_text">GitHub Repo</span>
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            <div class="hero-visual"></div>
+            <div class="hero-visual">
+                <!-- 中心网关组件 -->
+                <div class="gateway-diagram">
+                    <div class="gateway-core">
+                        <div class="gateway-icon">🚀</div>
+                        <div class="gateway-title">Sealgw</div>
+                        <div class="gateway-subtitle">4/7 Layer Gateway</div>
+                    </div>
+
+                    <!-- 连接线和端口 -->
+                    <div class="connection-lines">
+                        <div class="line north"></div>
+                        <div class="line south"></div>
+                        <div class="line east"></div>
+                        <div class="line west"></div>
+                    </div>
+
+                    <!-- 四个方向的技术组件 -->
+                    <div class="tech-components">
+                        <!-- 上方：LVS -->
+                        <div class="tech-component lvs-component">
+                            <div class="tech-icon">⚡</div>
+                            <div class="tech-name">LVS</div>
+                            <div class="tech-detail">Layer 4</div>
+                        </div>
+
+                        <!-- 右方：WAF -->
+                        <div class="tech-component waf-component">
+                            <div class="tech-icon">🛡️</div>
+                            <div class="tech-name">WAF</div>
+                            <div class="tech-detail">Security</div>
+                        </div>
+
+                        <!-- 下方：TLS -->
+                        <div class="tech-component tls-component">
+                            <div class="tech-icon">🔐</div>
+                            <div class="tech-name">TLS</div>
+                            <div class="tech-detail">Encryption</div>
+                        </div>
+
+                        <!-- 左方：K8s -->
+                        <div class="tech-component k8s-component">
+                            <div class="tech-icon">☸️</div>
+                            <div class="tech-name">K8s</div>
+                            <div class="tech-detail">Orchestration</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 简化的性能指标 -->
+                <div class="simple-metrics">
+                    <div class="metric-card">
+                        <div class="metric-icon">⚡</div>
+                        <div class="metric-value">10M+</div>
+                        <div class="metric-label">Requests/sec</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📈</div>
+                        <div class="metric-value">&lt;1ms</div>
+                        <div class="metric-label">Latency</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">💚</div>
+                        <div class="metric-value">99.9%</div>
+                        <div class="metric-label">Uptime</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Features Section - Enhanced -->
     <section id="features" class="features-section">
         <div class="container">
-            <h2 class="animate-on-scroll" data-i18n="features.title">核心特性：性能与安全并重</h2>
-            <div class="feature-grid">
-                <div class="feature-item animate-on-scroll">
-                    <span class="icon-placeholder">4/7</span>
-                    <h3 data-i18n="features.f1_title">4/7 层混合代理</h3>
-                    <p data-i18n="features.f1_desc">底层基于高性能 LVS 实现四层代理，上层提供强大的七层路由、认证和 API 治理能力。</p>
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="features.title">核心特性：性能与安全并重</h2>
+                <p class="section-subtitle" data-i18n="features.subtitle">企业级网关解决方案，为现代云原生应用提供强大的流量管理能力</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper layered-icon">
+                            <span class="icon-layer">4</span>
+                            <span class="icon-layer">7</span>
+                        </div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.f1_title">4/7 层混合代理</h3>
+                    <p class="feature-description" data-i18n="features.f1_desc">底层基于高性能 LVS 实现四层代理，上层提供强大的七层路由、认证和 API 治理能力。</p>
+                    <div class="feature-performance">
+                        <div class="performance-indicator">
+                            <div class="performance-icon">✓</div>
+                            <span data-i18n="features.f1_perf1">内核级处理</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">⚡</div>
+                            <span data-i18n="features.f1_perf2">零拷贝优化</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🚀</div>
+                            <span data-i18n="features.f1_perf3">10M+ RPS</span>
+                        </div>
+                    </div>
+                    <div class="feature-tags">
+                        <span class="tag"><span data-i18n="features.f1_tag1">LVS</span></span>
+                        <span class="tag"><span data-i18n="features.f1_tag2">负载均衡</span></span>
+                        <span class="tag"><span data-i18n="features.f1_tag3">IPVS</span></span>
+                        <span class="tag"><span data-i18n="features.f1_tag4">Netfilter</span></span>
+                    </div>
                 </div>
-                <div class="feature-item animate-on-scroll">
-                    <span class="icon-placeholder">SEC</span>
-                    <h3 data-i18n="features.f2_title">极致安全防护</h3>
-                    <p data-i18n="features.f2_desc">原生支持 WAF、DDoS 缓解、TLS/SSL 强制终止，网关层为应用构建第一道防线。</p>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper shield-icon">🛡️</div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.f2_title">极致安全防护</h3>
+                    <p class="feature-description" data-i18n="features.f2_desc">原生支持 WAF、DDoS 缓解、TLS/SSL 强制终止，网关层为应用构建第一道防线。</p>
+                    <div class="feature-performance">
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🔒</div>
+                            <span>AES-256 加密</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🛡️</div>
+                            <span>OWASP 防护</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">⚡</div>
+                            <span>智能防护</span>
+                        </div>
+                    </div>
+                    <div class="feature-tags">
+                        <span class="tag"><span>WAF</span></span>
+                        <span class="tag"><span>DDoS</span></span>
+                        <span class="tag"><span>TLS</span></span>
+                        <span class="tag"><span>防火墙</span></span>
+                    </div>
                 </div>
-                <div class="feature-item animate-on-scroll">
-                    <span class="icon-placeholder">API</span>
-                    <h3 data-i18n="features.f3_title">统一 API 治理</h3>
-                    <p data-i18n="features.f3_desc">提供动态限流、熔断和请求重写能力，对 Sealos 上的所有服务进行精细化控制。</p>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper api-icon">⚡</div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.f3_title">统一 API 治理</h3>
+                    <p class="feature-description" data-i18n="features.f3_desc">提供动态限流、熔断和请求重写能力，对 Sealos 上的所有服务进行精细化控制。</p>
+                    <div class="feature-performance">
+                        <div class="performance-indicator">
+                            <div class="performance-icon">📊</div>
+                            <span>实时监控</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🎯</div>
+                            <span>精确控制</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">⚙️</div>
+                            <span>动态配置</span>
+                        </div>
+                    </div>
+                    <div class="feature-tags">
+                        <span class="tag"><span>限流</span></span>
+                        <span class="tag"><span>熔断</span></span>
+                        <span class="tag"><span>治理</span></span>
+                        <span class="tag"><span>监控</span></span>
+                    </div>
                 </div>
-                <div class="feature-item animate-on-scroll">
-                    <span class="icon-placeholder">HA</span>
-                    <h3 data-i18n="features.f4_title">高可用设计</h3>
-                    <p data-i18n="features.f4_desc">深度集成 `lvscare` 机制，确保网关入口和后端 Real Server 列表的持续高可用。</p>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper ha-icon">🔄</div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.f4_title">高可用设计</h3>
+                    <p class="feature-description" data-i18n="features.f4_desc">深度集成 `lvscare` 机制，确保网关入口和后端 Real Server 列表的持续高可用。</p>
+                    <div class="feature-performance">
+                        <div class="performance-indicator">
+                            <div class="performance-icon">✓</div>
+                            <span>99.99% 可用性</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">⚡</div>
+                            <span>毫秒级切换</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🔄</div>
+                            <span>自动恢复</span>
+                        </div>
+                    </div>
+                    <div class="feature-tags">
+                        <span class="tag"><span>高可用</span></span>
+                        <span class="tag"><span>健康检查</span></span>
+                        <span class="tag"><span>故障转移</span></span>
+                        <span class="tag"><span>LVSCare</span></span>
+                    </div>
+                </div>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper performance-icon">📈</div>
+                    </div>
+                    <h3 class="feature-title">云原生集成</h3>
+                    <p class="feature-description">深度集成 Sealos 平台生态，提供原生 Kubernetes 支持，一键部署和管理。</p>
+                    <div class="feature-performance">
+                        <div class="performance-indicator">
+                            <div class="performance-icon">☸️</div>
+                            <span>K8s 原生</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🚀</div>
+                            <span>自动扩缩容</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🔧</div>
+                            <span>服务发现</span>
+                        </div>
+                    </div>
+                    <div class="feature-tags">
+                        <span class="tag"><span>Sealos</span></span>
+                        <span class="tag"><span>Kubernetes</span></span>
+                        <span class="tag"><span>Service Mesh</span></span>
+                        <span class="tag"><span>云原生</span></span>
+                    </div>
+                </div>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper monitor-icon">📊</div>
+                    </div>
+                    <h3 class="feature-title">实时监控分析</h3>
+                    <p class="feature-description">全方位监控体系，实时收集网关运行数据，提供详细的性能分析和告警机制。</p>
+                    <div class="feature-performance">
+                        <div class="performance-indicator">
+                            <div class="performance-icon">📊</div>
+                            <span>实时指标</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">📈</div>
+                            <span>性能分析</span>
+                        </div>
+                        <div class="performance-indicator">
+                            <div class="performance-icon">🔔</div>
+                            <span>智能告警</span>
+                        </div>
+                    </div>
+                    <div class="feature-tags">
+                        <span class="tag"><span>Prometheus</span></span>
+                        <span class="tag"><span>Grafana</span></span>
+                        <span class="tag"><span>日志收集</span></span>
+                        <span class="tag"><span>链路追踪</span></span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="advantages" class="advantages-section">
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture-section">
         <div class="container">
-            <h2 class="animate-on-scroll" data-i18n="advantages.title">Sealgw 设计理念</h2>
-            <div class="advantage-grid">
-                <div class="advantage-item animate-on-scroll">
-                    <h3 data-i18n="advantages.a1_title">性能优先</h3>
-                    <p data-i18n="advantages.a1_desc">从底层 LVS 选型到上层代理实现，一切设计都以提供最小延迟和最大吞吐量为目标。</p>
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="architecture.title">架构设计</h2>
+                <p class="section-subtitle" data-i18n="architecture.subtitle">现代化微服务架构，支持云原生部署</p>
+            </div>
+
+            <!-- 3D Architecture Diagram -->
+            <div class="architecture-3d">
+                <!-- 用户层 -->
+                <div class="arch-layer user-arch-layer">
+                    <div class="layer-header">
+                        <div class="layer-icon">👥</div>
+                        <h3 class="layer-title">用户层</h3>
+                        <div class="layer-desc">客户端应用和用户接口</div>
+                    </div>
+                    <div class="layer-grid user-grid">
+                        <div class="arch-component web-client">
+                            <div class="component-icon">🌐</div>
+                            <div class="component-title">Web Client</div>
+                            <div class="component-desc">浏览器应用</div>
+                        </div>
+                        <div class="arch-component mobile-client">
+                            <div class="component-icon">📱</div>
+                            <div class="component-title">Mobile App</div>
+                            <div class="component-desc">移动应用</div>
+                        </div>
+                        <div class="arch-component api-client">
+                            <div class="component-icon">⚡</div>
+                            <div class="component-title">API Client</div>
+                            <div class="component-desc">第三方集成</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="advantage-item animate-on-scroll">
-                    <h3 data-i18n="advantages.a2_title">云原生管理</h3>
-                    <p data-i18n="advantages.a2_desc">配置完全声明式，通过 Kubernetes API 管理</p>
+
+                <!-- 连接层 -->
+                <div class="connection-layer">
+                    <div class="connection-flow">
+                        <div class="flow-arrow"></div>
+                        <div class="flow-label">HTTPS/WSS</div>
+                    </div>
                 </div>
-                <div class="advantage-item animate-on-scroll">
-                    <h3 data-i18n="advantages.a3_title">生态集成</h3>
-                    <p data-i18n="advantages.a3_desc">与 Sealos 平台内的存储、监控、认证等模块深度融合，减少运维复杂性。</p>
+
+                <!-- 网关层 -->
+                <div class="arch-layer gateway-arch-layer">
+                    <div class="layer-header">
+                        <div class="layer-icon">🚪</div>
+                        <h3 class="layer-title">网关层</h3>
+                        <div class="layer-desc">统一入口，流量管理</div>
+                    </div>
+                    <div class="gateway-core">
+                        <div class="sealgw-logo">🚀</div>
+                        <div class="gateway-title">Sealgw</div>
+                        <div class="gateway-subtitle">4/7 Layer Hybrid Gateway</div>
+
+                        <!-- 网关核心组件 -->
+                        <div class="gateway-components">
+                            <div class="gateway-module lvs-module">
+                                <div class="module-icon">⚡</div>
+                                <div class="module-title">LVS</div>
+                                <div class="module-desc">Layer 4</div>
+                            </div>
+                            <div class="gateway-module waf-module">
+                                <div class="module-icon">🛡️</div>
+                                <div class="module-title">WAF</div>
+                                <div class="module-desc">Security</div>
+                            </div>
+                            <div class="gateway-module api-module">
+                                <div class="module-icon">🔧</div>
+                                <div class="module-title">API Gateway</div>
+                                <div class="module-desc">Layer 7</div>
+                            </div>
+                            <div class="gateway-module monitor-module">
+                                <div class="module-icon">📊</div>
+                                <div class="module-title">Monitor</div>
+                                <div class="module-desc">LVSCare</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 连接层 -->
+                <div class="connection-layer">
+                    <div class="connection-flow">
+                        <div class="flow-arrow"></div>
+                        <div class="flow-label">Service Mesh</div>
+                    </div>
+                </div>
+
+                <!-- 服务层 -->
+                <div class="arch-layer service-arch-layer">
+                    <div class="layer-header">
+                        <div class="layer-icon">⚙️</div>
+                        <h3 class="layer-title">服务层</h3>
+                        <div class="layer-desc">微服务集群</div>
+                    </div>
+                    <div class="layer-grid service-grid">
+                        <div class="arch-component user-service">
+                            <div class="component-icon">👤</div>
+                            <div class="component-title">User Service</div>
+                            <div class="component-desc">用户管理</div>
+                        </div>
+                        <div class="arch-component order-service">
+                            <div class="component-icon">🛒</div>
+                            <div class="component-title">Order Service</div>
+                            <div class="component-desc">订单处理</div>
+                        </div>
+                        <div class="arch-component product-service">
+                            <div class="component-icon">📦</div>
+                            <div class="component-title">Product Service</div>
+                            <div class="component-desc">商品管理</div>
+                        </div>
+                        <div class="arch-component payment-service">
+                            <div class="component-icon">💳</div>
+                            <div class="component-title">Payment Service</div>
+                            <div class="component-desc">支付处理</div>
+                        </div>
+                        <div class="arch-component notification-service">
+                            <div class="component-icon">📧</div>
+                            <div class="component-title">Notification Service</div>
+                            <div class="component-desc">消息通知</div>
+                        </div>
+                        <div class="arch-component analytics-service">
+                            <div class="component-icon">📈</div>
+                            <div class="component-title">Analytics Service</div>
+                            <div class="component-desc">数据分析</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 连接层 -->
+                <div class="connection-layer">
+                    <div class="connection-flow">
+                        <div class="flow-arrow"></div>
+                        <div class="flow-label">Database</div>
+                    </div>
+                </div>
+
+                <!-- 数据层 -->
+                <div class="arch-layer data-arch-layer">
+                    <div class="layer-header">
+                        <div class="layer-icon">💾</div>
+                        <h3 class="layer-title">数据层</h3>
+                        <div class="layer-desc">数据存储与缓存</div>
+                    </div>
+                    <div class="layer-grid data-grid">
+                        <div class="arch-component database">
+                            <div class="component-icon">🗄️</div>
+                            <div class="component-title">PostgreSQL</div>
+                            <div class="component-desc">主数据库</div>
+                        </div>
+                        <div class="arch-component cache">
+                            <div class="component-icon">⚡</div>
+                            <div class="component-title">Redis</div>
+                            <div class="component-desc">缓存服务</div>
+                        </div>
+                        <div class="arch-component storage">
+                            <div class="component-icon">📁</div>
+                            <div class="component-title">Object Storage</div>
+                            <div class="component-desc">文件存储</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Architecture Features -->
+            <div class="arch-features">
+                <div class="arch-feature">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">高可用</div>
+                    <div class="feature-desc">多实例部署，自动故障转移</div>
+                </div>
+                <div class="arch-feature">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-title">弹性伸缩</div>
+                    <div class="feature-desc">根据负载自动扩缩容</div>
+                </div>
+                <div class="arch-feature">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">安全防护</div>
+                    <div class="feature-desc">多层安全防护机制</div>
+                </div>
+                <div class="arch-feature">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">监控告警</div>
+                    <div class="feature-desc">实时监控与智能告警</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Performance Section -->
+    <section id="performance" class="performance-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="performance.title">性能指标</h2>
+                <p class="section-subtitle" data-i18n="performance.subtitle">业界领先的性能表现</p>
+            </div>
+            <div class="performance-grid">
+                <div class="perf-card">
+                    <div class="perf-icon">🚀</div>
+                    <div class="perf-value">10M+</div>
+                    <div class="perf-label" data-i18n="perf.connections">并发连接数</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-icon">⚡</div>
+                    <div class="perf-value">&lt;1ms</div>
+                    <div class="perf-label" data-i18n="perf.latency">处理延迟</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-icon">📈</div>
+                    <div class="perf-value">40Gbps</div>
+                    <div class="perf-label" data-i18n="perf.throughput">吞吐量</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-icon">💚</div>
+                    <div class="perf-value">99.99%</div>
+                    <div class="perf-label" data-i18n="perf.uptime">服务可用性</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connection Flow Demo Section -->
+    <section id="connection-flow" class="connection-flow-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="connection.title">动态连接流向演示</h2>
+                <p class="section-subtitle" data-i18n="connection.subtitle">可视化展示请求如何通过 LVS 负载均衡器智能路由到后端服务</p>
+            </div>
+
+            <div class="connection-demo">
+                <div class="flow-controls">
+                    <button class="flow-btn" id="start-flow" data-i18n="connection.start_demo">开始演示</button>
+                    <button class="flow-btn" id="pause-flow" data-i18n="connection.pause">暂停</button>
+                    <div class="flow-speed">
+                        <label for="flow-speed" data-i18n="connection.speed">速度</label>
+                        <input type="range" id="flow-speed" min="1" max="10" value="5">
+                    </div>
+                    <div class="algorithm-selector">
+                        <label for="algorithm-select-demo" data-i18n="connection.algorithm_label">负载均衡算法:</label>
+                        <select id="algorithm-select-demo">
+                            <option value="rr" data-i18n="connection.algo_rr">轮询 (Round Robin)</option>
+                            <option value="wrr" data-i18n="connection.algo_wrr">加权轮询 (Weighted Round Robin)</option>
+                            <option value="lc" data-i18n="connection.algo_lc">最少连接 (Least Connections)</option>
+                            <option value="wlc" data-i18n="connection.algo_wlc">加权最少连接 (Weighted Least Connections)</option>
+                            <option value="sh" data-i18n="connection.algo_sh">源地址哈希 (Source Hash)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 请求日志 -->
+                <div class="request-log">
+                    <div class="log-header">
+                        <h4 data-i18n="connection.request_log">请求日志</h4>
+                        <button class="clear-log" id="clear-log" data-i18n="connection.clear_log">清空日志</button>
+                    </div>
+                    <div class="log-container" id="request-log-container">
+                        <div class="log-entry placeholder">
+                            <span class="log-time">--:--:--</span>
+                            <span class="log-message" data-i18n="connection.waiting_requests">等待请求...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-diagram">
+                    <!-- 客户端区域 -->
+                    <div class="flow-zone client-zone">
+                        <div class="zone-title" data-i18n="connection.clients">客户端</div>
+                        <div class="client-nodes">
+                            <div class="client-node" data-client="1">👤</div>
+                            <div class="client-node" data-client="2">👤</div>
+                            <div class="client-node" data-client="3">👤</div>
+                        </div>
+                    </div>
+
+                    <!-- LVS 负载均衡器 -->
+                    <div class="flow-zone lb-zone">
+                        <div class="zone-title" data-i18n="connection.load_balancer">LVS 负载均衡器</div>
+                        <div class="lb-node">
+                            <div class="lb-icon">⚖️</div>
+                            <div class="lb-info">
+                                <div class="algorithm" data-i18n="connection.algorithm">算法: <span id="current-algorithm">轮询 (RR)</span></div>
+                                <div class="connections" data-i18n="connection.active_connections">活跃连接: <span id="active-connections">0</span></div>
+                                <div class="health-status">
+                                    <span data-i18n="connection.health_status">健康状态:</span>
+                                    <span class="health-indicator online" id="lb-health">在线</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 后端服务器区域 -->
+                    <div class="flow-zone server-zone">
+                        <div class="zone-title" data-i18n="connection.backend_servers">后端服务器</div>
+                        <div class="server-nodes">
+                            <div class="server-node" data-server="1" data-weight="3">
+                                <div class="server-icon">🖥️</div>
+                                <div class="server-info">
+                                    <div class="server-ip">192.168.1.10</div>
+                                    <div class="server-weight">权重: 3</div>
+                                    <div class="server-connections">连接: <span class="connection-count">0</span></div>
+                                    <div class="server-load">负载: <span class="load-value">0</span>%</div>
+                                    <div class="server-health">
+                                        <span class="health-dot online"></span>
+                                        <span class="health-text" data-i18n="connection.healthy">健康</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="server-node" data-server="2" data-weight="2">
+                                <div class="server-icon">🖥️</div>
+                                <div class="server-info">
+                                    <div class="server-ip">192.168.1.11</div>
+                                    <div class="server-weight">权重: 2</div>
+                                    <div class="server-connections">连接: <span class="connection-count">0</span></div>
+                                    <div class="server-load">负载: <span class="load-value">0</span>%</div>
+                                    <div class="server-health">
+                                        <span class="health-dot online"></span>
+                                        <span class="health-text" data-i18n="connection.healthy">健康</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="server-node" data-server="3" data-weight="1">
+                                <div class="server-icon">🖥️</div>
+                                <div class="server-info">
+                                    <div class="server-ip">192.168.1.12</div>
+                                    <div class="server-weight">权重: 1</div>
+                                    <div class="server-connections">连接: <span class="connection-count">0</span></div>
+                                    <div class="server-load">负载: <span class="load-value">0</span>%</div>
+                                    <div class="server-health">
+                                        <span class="health-dot online"></span>
+                                        <span class="health-text" data-i18n="connection.healthy">健康</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVG 连接动画 -->
+                    <svg class="flow-connections" id="flow-connections">
+                        <!-- 动态生成的连接线 -->
+                    </svg>
+                </div>
+
+                <div class="flow-stats">
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="connection.total_requests">总请求数</span>
+                        <span class="stat-value" id="total-requests">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="connection.requests_per_sec">每秒请求</span>
+                        <span class="stat-value" id="requests-per-sec">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="connection.avg_response_time">平均响应时间</span>
+                        <span class="stat-value" id="avg-response-time">0ms</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="connection.success_rate">成功率</span>
+                        <span class="stat-value" id="success-rate">100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Config Generator Section -->
+    <section id="config-generator" class="config-generator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="config.title">LVSCare 配置生成器</h2>
+                <p class="section-subtitle" data-i18n="config.subtitle">交互式工具，快速生成 LVSCare 配置文件，支持多种负载均衡算法</p>
+            </div>
+
+            <div class="config-workspace">
+                <div class="config-form">
+                    <div class="form-section">
+                        <h3 data-i18n="config.basic_settings">基础设置</h3>
+                        <div class="form-group">
+                            <label for="vip-input" data-i18n="config.vip">虚拟 IP 地址</label>
+                            <input type="text" id="vip-input" placeholder="192.168.1.100" value="192.168.1.100">
+                        </div>
+                        <div class="form-group">
+                            <label for="port-input" data-i18n="config.port">端口</label>
+                            <input type="number" id="port-input" placeholder="80" value="80">
+                        </div>
+                        <div class="form-group">
+                            <label for="algorithm-select" data-i18n="config.algorithm">负载均衡算法</label>
+                            <select id="algorithm-select">
+                                <option value="rr" data-i18n="config.algo_rr">轮询 (Round Robin)</option>
+                                <option value="wrr" data-i18n="config.algo_wrr">加权轮询 (Weighted Round Robin)</option>
+                                <option value="lc" data-i18n="config.algo_lc">最少连接 (Least Connections)</option>
+                                <option value="wlc" data-i18n="config.algo_wlc">加权最少连接 (Weighted Least Connections)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 data-i18n="config.health_check">健康检查</h3>
+                        <div class="form-group">
+                            <label for="check-interval" data-i18n="config.check_interval">检查间隔</label>
+                            <input type="number" id="check-interval" placeholder="5" value="5">
+                            <span class="unit">秒</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="check-timeout" data-i18n="config.check_timeout">检查超时</label>
+                            <input type="number" id="check-timeout" placeholder="3" value="3">
+                            <span class="unit">秒</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="retries" data-i18n="config.retries">重试次数</label>
+                            <input type="number" id="retries" placeholder="3" value="3">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 data-i18n="config.backend_servers">后端服务器</h3>
+                        <div id="backend-servers">
+                            <div class="server-input-group">
+                                <input type="text" class="server-ip" id="server-ip-1" placeholder="192.168.1.10" aria-label="服务器IP">
+                                <input type="number" class="server-port" id="server-port-1" placeholder="80" value="80" aria-label="服务器端口">
+                                <input type="number" class="server-weight" id="server-weight-1" placeholder="100" value="100" aria-label="服务器权重">
+                                <button class="remove-server" style="display:none;" aria-label="删除服务器">✕</button>
+                            </div>
+                        </div>
+                        <button class="add-server-btn" id="add-backend-server" aria-label="添加服务器">+ 添加服务器</button>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn-primary" id="generate-config" data-i18n="config.generate">生成配置</button>
+                        <button class="btn-secondary" id="download-config" data-i18n="config.download">下载配置文件</button>
+                        <button class="btn-secondary" id="copy-config" data-i18n="config.copy">复制配置</button>
+                    </div>
+                </div>
+
+                <div class="config-output">
+                    <div class="output-header">
+                        <h3 data-i18n="config.generated_config">生成的配置</h3>
+                        <div class="format-tabs">
+                            <button class="format-tab active" data-format="yaml">YAML</button>
+                            <button class="format-tab" data-format="json">JSON</button>
+                            <button class="format-tab" data-format="shell">Shell</button>
+                        </div>
+                    </div>
+                    <div class="config-content">
+                        <pre id="config-preview"><code># 点击"生成配置"按钮来创建您的 LVSCare 配置文件</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Status Section -->
     <section id="status" class="status-section">
         <div class="container">
-            <h2 class="animate-on-scroll" data-i18n="status.title">项目状态与路线图</h2>
-            <div class="status-content animate-on-scroll">
-                <p data-i18n="status.phase"><strong>当前阶段：</strong>核心功能开发中，主要聚焦于 LVS + L7 核心代理逻辑的稳定性和性能测试。</p>
-                <p data-i18n="status.short_term"><strong>短期目标：</strong>完成基础的 4/7 层路由、TLS 终止和基本的 lvscare 高可用集成。</p>
-                <p data-i18n="status.contribute"><strong>欢迎参与：</strong>我们欢迎所有社区开发者贡献代码、提供反馈和参与架构设计。加入我们的 GitHub 社区，共同塑造 Sealgw 的未来！</p>
-                <a href="https://github.com/gitlayzer/sealgw/issues" target="_blank" class="btn primary-btn" data-i18n="status.roadmap_btn">查看 Roadmap / 贡献</a>
+            <div class="status-container">
+                <div class="status-content">
+                    <h2 class="section-title" data-i18n="status.title">项目状态与路线图</h2>
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 data-i18n="status.phase1_title">核心架构设计</h3>
+                                <p data-i18n="status.phase1_desc">完成 LVS + L7 层混合代理架构设计</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item current">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 data-i18n="status.phase_title">核心功能开发中</h3>
+                                <p data-i18n="status.phase_desc">主要聚焦于 LVS + L7 核心代理逻辑的稳定性和性能测试</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item upcoming">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 data-i18n="status.short_term_title">短期目标</h3>
+                                <p data-i18n="status.short_term">完成基础的 4/7 层路由、TLS 终止和基本的 lvscare 高可用集成</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-actions">
+                        <a href="https://github.com/gitlayzer/sealgw/issues" target="_blank" class="btn-primary" data-i18n="status.roadmap_btn">查看 Roadmap / 贡献</a>
+                    </div>
+                </div>
+                <div class="status-visual">
+                    <div class="progress-rings">
+                        <div class="progress-ring">
+                            <svg class="progress-svg" width="120" height="120">
+                                <circle class="progress-bg" cx="60" cy="60" r="50"></circle>
+                                <circle class="progress-fill" cx="60" cy="60" r="50" style="stroke-dashoffset: 94"></circle>
+                            </svg>
+                            <div class="progress-text">75%</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-
+    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="animate-on-scroll" data-i18n="contact.title">联系我们，共建未来</h2>
-            <p class="animate-on-scroll" data-i18n="contact.subtitle">对项目有疑问、想要参与贡献或技术交流？</p>
-            <div class="contact-info animate-on-scroll">
-                <a href="https://github.com/gitlayzer/sealgw/issues" target="_blank" class="btn primary-btn" data-i18n="contact.bug_report">报告 Bug / 提建议</a>
-                <a href="mailto:gduxintian@gmail.com" class="btn secondary-btn" data-i18n="contact.email_us">联系我们</a>
+            <div class="contact-container">
+                <div class="contact-content">
+                    <h2 class="section-title" data-i18n="contact.title">联系我们，共建未来</h2>
+                    <p class="section-subtitle" data-i18n="contact.subtitle">对项目有疑问、想要参与贡献或技术交流？</p>
+                    <div class="contact-methods">
+                        <a href="https://github.com/gitlayzer/sealgw/issues" target="_blank" class="contact-method">
+                            <div class="contact-icon">🐛</div>
+                            <div class="contact-text">
+                                <h4 data-i18n="contact.bug_report">报告 Bug / 提建议</h4>
+                                <p>在 GitHub Issues 上反馈问题</p>
+                            </div>
+                        </a>
+                        <a href="mailto:gduxintian@gmail.com" class="contact-method">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-text">
+                                <h4 data-i18n="contact.email_us">联系我们</h4>
+                                <p>发送邮件到项目维护者</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
-    <div class="container">
-        <p data-i18n="footer.copyright">&copy; 2025 Sealgw. A Sealos Module. All rights reserved.</p>
+<footer class="modern-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo-wrapper">
+                    <img src="img/sealgw.png" alt="Sealgw Logo" class="footer-logo">
+                    <span class="footer-logo-text">sealgw</span>
+                </div>
+                <p class="footer-description" data-i18n="footer.description">云原生高性能网关，为 Sealos 平台提供统一的流量管理解决方案</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4 data-i18n="footer.links.product">产品</h4>
+                    <a href="#features" data-i18n="footer.links.features">核心特性</a>
+                    <a href="#performance" data-i18n="footer.links.performance">性能指标</a>
+                    <a href="#architecture" data-i18n="footer.links.architecture">架构设计</a>
+                </div>
+                <div class="link-group">
+                    <h4 data-i18n="footer.links.resources">资源</h4>
+                    <a href="https://github.com/gitlayzer/sealgw/tree/master/docs" target="_blank" data-i18n="footer.links.docs">开发文档</a>
+                    <a href="https://github.com/gitlayzer/sealgw" target="_blank" data-i18n="footer.links.github">GitHub</a>
+                    <a href="https://github.com/gitlayzer/sealgw/issues" target="_blank" data-i18n="footer.links.issues">问题反馈</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer.copyright">&copy; 2025 Sealgw. A Sealos Module. All rights reserved.</p>
+        </div>
     </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script-simple.js"></script>
 </body>
 </html>

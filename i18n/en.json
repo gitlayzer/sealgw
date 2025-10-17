@@ -4,18 +4,32 @@
   "nav": {
     "home": "Home",
     "features": "Features",
-    "design_concept": "Design Concept",
+    "architecture": "Architecture",
+    "performance": "Performance",
+    "lvscare": "LVSCare Monitor",
+    "demo": "Connection Demo",
+    "generator": "Config Generator",
     "status": "Project Status",
     "contact": "Contact"
   },
   "hero": {
     "title": "Cloud-Native High-Performance 4/7 Layer Hybrid Gateway",
     "subtitle": "Sealgw (In Development) is built for the Sealos platform, unifying your traffic with extreme security and kernel-level speed.",
+    "stats": {
+      "rps": "Connections",
+      "latency": "Latency",
+      "uptime": "Uptime"
+    },
     "docs_btn": "View Development Docs",
-    "repo_btn": "GitHub Repo"
+    "docs_text": "View Development Docs",
+    "repo_btn": "GitHub Repo",
+    "repo_text": "GitHub Repo",
+    "gateway_layer": "Gateway Layer",
+    "tech_layer": "Technology Stack"
   },
   "features": {
     "title": "Core Features: Performance and Security",
+    "subtitle": "Enterprise-grade gateway solution providing powerful traffic management for modern cloud-native applications",
     "f1_title": "4/7 Layer Hybrid Proxy",
     "f1_desc": "Utilizes high-performance LVS for Layer 4 proxying, complemented by robust Layer 7 routing, authentication, and API governance.",
     "f2_title": "Extreme Security Protection",
@@ -25,19 +39,27 @@
     "f4_title": "High Availability Design",
     "f4_desc": "Deep integration of the `lvscare` mechanism ensures continuous high availability for the gateway entry point and backend Real Server lists."
   },
-  "advantages": {
-    "title": "Sealgw Design Philosophy",
-    "a1_title": "Performance First",
-    "a1_desc": "From the underlying LVS selection to the upper-layer proxy implementation, all design aims for minimal latency and maximum throughput.",
-    "a2_title": "Cloud-Native Management",
-    "a2_desc": "Configuration is fully declarative, managed via Kubernetes API for seamless GitOps integration.",
-    "a3_title": "Ecosystem Integration",
-    "a3_desc": "Deeply integrated with Sealos platform modules like storage, monitoring, and authentication, reducing operational complexity."
+  "architecture": {
+    "title": "Architecture Design",
+    "subtitle": "Modern microservices architecture supporting cloud-native deployment"
+  },
+  "performance": {
+    "title": "Performance Metrics",
+    "subtitle": "Industry-leading performance benchmarks",
+    "connections": "Concurrent Connections",
+    "latency": "Processing Latency",
+    "throughput": "Throughput",
+    "uptime": "Service Availability"
   },
   "status": {
     "title": "Project Status and Roadmap",
+    "phase1_title": "Core Architecture Design",
+    "phase1_desc": "Complete LVS + L7 layer hybrid proxy architecture design",
+    "phase_title": "Core Functionality Development",
+    "phase_desc": "Focusing on stability and performance testing of LVS + L7 core proxy logic",
     "phase": "<strong>Current Phase:</strong> Core functionality development, focusing on the stability and performance testing of the LVS + L7 core proxy logic.",
-    "short_term": "<strong>Short-Term Goal:</strong> Complete basic 4/7 layer routing, TLS termination, and fundamental lvscare high-availability integration.",
+    "short_term_title": "Short-term Goals",
+    "short_term": "Complete basic 4/7 layer routing, TLS termination, and fundamental lvscare high-availability integration",
     "contribute": "<strong>Get Involved:</strong> We welcome all community developers to contribute code, provide feedback, and participate in architecture design. Join our GitHub community!",
     "roadmap_btn": "View Roadmap / Contribute"
   },
@@ -48,6 +70,76 @@
     "email_us": "Email Us"
   },
   "footer": {
+    "description": "Cloud-native high-performance gateway providing unified traffic management solutions for the Sealos platform",
+    "links": {
+      "product": "Product",
+      "features": "Features",
+      "performance": "Performance",
+      "architecture": "Architecture",
+      "resources": "Resources",
+      "docs": "Documentation",
+      "github": "GitHub",
+      "issues": "Issues"
+    },
     "copyright": "&copy; 2025 Sealgw. A Sealos Module. All rights reserved."
+  },
+  "lvscare": {
+    "title": "LVSCare Real-time Monitoring",
+    "subtitle": "High-availability LVS cluster management based on Sealos platform, monitoring service status and traffic distribution in real-time",
+    "virtual_servers": "Virtual Servers",
+    "real_servers": "Real Servers",
+    "all_healthy": "All Healthy",
+    "servers_online": "servers online",
+    "connections": "Connections",
+    "throughput": "Throughput",
+    "simulate_failover": "Simulate Failover",
+    "add_server": "Add Server",
+    "refresh": "Refresh Monitor"
+  },
+  "connection": {
+    "title": "Dynamic Connection Flow Demo",
+    "subtitle": "Visualize how requests are intelligently routed through LVS load balancer to backend services",
+    "start_demo": "Start Demo",
+    "pause": "Pause",
+    "speed": "Speed",
+    "algorithm_label": "Load Balancing Algorithm:",
+    "algorithm": "Algorithm:",
+    "algo_rr": "Round Robin",
+    "algo_wrr": "Weighted Round Robin",
+    "algo_lc": "Least Connections",
+    "algo_wlc": "Weighted Least Connections",
+    "algo_sh": "Source Hash",
+    "request_log": "Request Log",
+    "waiting_requests": "Waiting for requests...",
+    "clients": "Clients",
+    "load_balancer": "LVS Load Balancer",
+    "active_connections": "Active Connections",
+    "health_status": "Health Status:",
+    "backend_servers": "Backend Servers",
+    "total_requests": "Total Requests",
+    "requests_per_sec": "Requests/sec",
+    "avg_response_time": "Avg Response Time",
+    "success_rate": "Success Rate"
+  },
+  "config": {
+    "title": "LVSCare Configuration Generator",
+    "subtitle": "Interactive tool for quickly generating LVSCare configuration files with support for multiple load balancing algorithms",
+    "basic_settings": "Basic Settings",
+    "vip": "Virtual IP Address",
+    "port": "Port",
+    "algorithm": "Load Balancing Algorithm",
+    "algo_rr": "Round Robin",
+    "algo_wrr": "Weighted Round Robin",
+    "algo_lc": "Least Connections",
+    "algo_wlc": "Weighted Least Connections",
+    "health_check": "Health Check",
+    "check_interval": "Check Interval",
+    "check_timeout": "Check Timeout",
+    "retries": "Retries",
+    "backend_servers": "Backend Servers",
+    "generate": "Generate Config",
+    "download": "Download Config",
+    "copy": "Copy Config",
+    "generated_config": "Generated Configuration"
   }
 }

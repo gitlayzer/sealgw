@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Sealgw - 云原生高性能 4/7 层网关 (开发中)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico" type="image/svg+xml">
+</head>
+<body data-theme="light">
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="img/sealgw.png" alt="Sealgw Logo" height="30">
+            <span>sealgw</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero" data-i18n="nav.home">首页</a></li>
+                <li><a href="#features" data-i18n="nav.features">核心特性</a></li>
+                <li><a href="#advantages" data-i18n="nav.design_concept">设计理念</a></li>
+                <li><a href="#status" data-i18n="nav.status">项目状态</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">联系</a></li>
+            </ul>
+        </nav>
+        <button id="lang-toggle" class="nav-btn" aria-label="Toggle Language" data-i18n="lang_code">EN</button>
+        <button id="theme-toggle" class="nav-btn" aria-label="Toggle Dark Mode">🌙</button>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    </div>
+</header>
+
+<main>
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <h1 class="animate-on-scroll" data-i18n="hero.title">云原生高性能 4/7 层混合网关</h1>
+            <p class="animate-on-scroll" data-i18n="hero.subtitle">
+                Sealgw (开发中) —— 为 Sealos 平台构建，以极致安全和内核级速度，统一您的南北向和东西向流量。
+            </p>
+            <div class="btn-group animate-on-scroll">
+                <a href="https://github.com/gitlayzer/sealgw/docs" target="_blank" class="btn primary-btn" data-i18n="hero.docs_btn">查看开发文档</a>
+                <a href="https://github.com/gitlayzer/sealgw" target="_blank" class="btn secondary-btn" data-i18n="hero.repo_btn">GitHub Repo</a>
+            </div>
+            <div class="hero-visual"></div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="animate-on-scroll" data-i18n="features.title">核心特性：性能与安全并重</h2>
+            <div class="feature-grid">
+                <div class="feature-item animate-on-scroll">
+                    <span class="icon-placeholder">4/7</span>
+                    <h3 data-i18n="features.f1_title">4/7 层混合代理</h3>
+                    <p data-i18n="features.f1_desc">底层基于高性能 LVS 实现四层代理，上层提供强大的七层路由、认证和 API 治理能力。</p>
+                </div>
+                <div class="feature-item animate-on-scroll">
+                    <span class="icon-placeholder">SEC</span>
+                    <h3 data-i18n="features.f2_title">极致安全防护</h3>
+                    <p data-i18n="features.f2_desc">原生支持 WAF、DDoS 缓解、TLS/SSL 强制终止，网关层为应用构建第一道防线。</p>
+                </div>
+                <div class="feature-item animate-on-scroll">
+                    <span class="icon-placeholder">API</span>
+                    <h3 data-i18n="features.f3_title">统一 API 治理</h3>
+                    <p data-i18n="features.f3_desc">提供动态限流、熔断和请求重写能力，对 Sealos 上的所有服务进行精细化控制。</p>
+                </div>
+                <div class="feature-item animate-on-scroll">
+                    <span class="icon-placeholder">HA</span>
+                    <h3 data-i18n="features.f4_title">高可用设计</h3>
+                    <p data-i18n="features.f4_desc">深度集成 `lvscare` 机制，确保网关入口和后端 Real Server 列表的持续高可用。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages" class="advantages-section">
+        <div class="container">
+            <h2 class="animate-on-scroll" data-i18n="advantages.title">Sealgw 设计理念</h2>
+            <div class="advantage-grid">
+                <div class="advantage-item animate-on-scroll">
+                    <h3 data-i18n="advantages.a1_title">性能优先</h3>
+                    <p data-i18n="advantages.a1_desc">从底层 LVS 选型到上层代理实现，一切设计都以提供最小延迟和最大吞吐量为目标。</p>
+                </div>
+                <div class="advantage-item animate-on-scroll">
+                    <h3 data-i18n="advantages.a2_title">云原生管理</h3>
+                    <p data-i18n="advantages.a2_desc">配置完全声明式，通过 Kubernetes API 管理</p>
+                </div>
+                <div class="advantage-item animate-on-scroll">
+                    <h3 data-i18n="advantages.a3_title">生态集成</h3>
+                    <p data-i18n="advantages.a3_desc">与 Sealos 平台内的存储、监控、认证等模块深度融合，减少运维复杂性。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="status" class="status-section">
+        <div class="container">
+            <h2 class="animate-on-scroll" data-i18n="status.title">项目状态与路线图</h2>
+            <div class="status-content animate-on-scroll">
+                <p data-i18n="status.phase"><strong>当前阶段：</strong>核心功能开发中，主要聚焦于 LVS + L7 核心代理逻辑的稳定性和性能测试。</p>
+                <p data-i18n="status.short_term"><strong>短期目标：</strong>完成基础的 4/7 层路由、TLS 终止和基本的 lvscare 高可用集成。</p>
+                <p data-i18n="status.contribute"><strong>欢迎参与：</strong>我们欢迎所有社区开发者贡献代码、提供反馈和参与架构设计。加入我们的 GitHub 社区，共同塑造 Sealgw 的未来！</p>
+                <a href="https://github.com/gitlayzer/sealgw/issues" target="_blank" class="btn primary-btn" data-i18n="status.roadmap_btn">查看 Roadmap / 贡献</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="animate-on-scroll" data-i18n="contact.title">联系我们，共建未来</h2>
+            <p class="animate-on-scroll" data-i18n="contact.subtitle">对项目有疑问、想要参与贡献或技术交流？</p>
+            <div class="contact-info animate-on-scroll">
+                <a href="https://github.com/gitlayzer/sealgw/issues" target="_blank" class="btn primary-btn" data-i18n="contact.bug_report">报告 Bug / 提建议</a>
+                <a href="mailto:gduxintian@gmail.com" class="btn secondary-btn" data-i18n="contact.email_us">联系我们</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p data-i18n="footer.copyright">&copy; 2025 Sealgw. A Sealos Module. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

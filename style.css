@@ -1,0 +1,570 @@
+/* ========================================= */
+/* 0. 变量与字体设置 (现代设计标准) */
+/* ========================================= */
+:root {
+    --color-primary: #007bff; /* 主色：科技蓝 */
+    --color-secondary: #00bcd4; /* 辅色：青色/亮蓝 */
+    --color-text: #333333;
+    --color-background: #f4f7f6; /* 浅背景 */
+    --color-card-bg: #ffffff;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    --border-radius: 16px; /* 增加圆角，更柔和 */
+    --color-link-default: #555555; /* 浅色模式导航链接默认色 */
+
+    /* === Footer 变量 (浅色模式修正) === */
+    --color-footer-bg: #e5e9ee;      /* 更改为柔和的浅灰色/浅蓝色，实现“亮色”效果 */
+    --color-footer-text: #4a596b;     /* Footer 文本使用深色，确保对比度 */
+}
+
+/* 深色模式变量 */
+[data-theme="dark"] {
+    --color-text: #e0e6f0; /* 略微偏亮，提升对比 */
+    --color-background: #151d28; /* 深背景 */
+    --color-card-bg: #212d3d;
+    --color-shadow: rgba(0, 0, 0, 0.4);
+    --color-link-default: #b0c4de; /* 深色模式下导航链接的默认色 */
+
+    --color-footer-bg: #0d141b;      /* 深色模式下 Footer 颜色（极黑） */
+    --color-footer-text: #e0e6f0;    /* 深色模式下 Footer 文本颜色 */
+}
+
+
+/* 基本重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    transition: background-color 0.5s, color 0.5s;
+    scroll-behavior: smooth;
+    padding-top: 50px; /* 为固定的悬浮头部留出空间 */
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+
+/* ========================================= */
+/* 1. 头部与导航优化 (一体化设计核心) */
+/* ========================================= */
+header {
+    background: transparent; /* 关键：初始透明背景 */
+    box-shadow: none; /* 关键：移除阴影 */
+    position: fixed; /* 关键：固定悬浮 */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+/* 滚动后让头部有一点背景，增加可读性 */
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* 滚动后出现半透明背景 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+}
+[data-theme="dark"] header.scrolled {
+    background-color: rgba(21, 29, 40, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0; /* 增加上下内边距 */
+}
+
+/* ------------------ Logo 优化 ------------------ */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 800;
+    margin-right: 30px;
+}
+
+.logo img {
+    margin-right: 8px;
+    height: 30px;
+    /* 增加一个更精细的光晕效果 */
+    filter: drop-shadow(0 0 8px rgba(0, 188, 212, 0.5));
+    transition: filter 0.3s;
+}
+
+.logo span {
+    color: var(--color-primary);
+    font-size: 0.9em; /* 稍微缩小文本，突出图标 */
+    letter-spacing: 0.5px;
+}
+
+
+/* ------------------ 导航链接优化 ------------------ */
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: var(--color-link-default); /* 使用变量，适应深/浅色模式 */
+    opacity: 0.9;
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary); /* 悬停时的亮色 */
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--color-secondary);
+    opacity: 1;
+}
+
+nav ul li a:hover::after {
+    width: 100%; /* 悬停时下划线动画 */
+}
+
+/* ------------------ 主题切换/Toggle 按钮优化 ------------------ */
+.nav-btn {
+    /* 核心样式：统一的 Nav Button 基类 */
+    background: var(--color-card-bg);
+    border: 1px solid rgba(176, 196, 222, 0.3);
+    border-radius: 50%; /* 默认圆形 */
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    margin-left: 15px;
+    font-size: 1.1em;
+    color: var(--color-primary);
+    box-shadow: 0 1px 4px var(--color-shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 语言切换按钮 (lang-toggle) 特殊优化：胶囊形外观和图标 */
+#lang-toggle {
+    width: auto;
+    height: 38px;
+    border-radius: 19px;
+    padding: 0 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    color: var(--color-text); /* 文字颜色跟随主题 */
+    background: var(--color-background);
+    border: 1px solid rgba(176, 196, 222, 0.5);
+}
+
+[data-theme="dark"] #lang-toggle {
+    color: var(--color-link-default);
+}
+
+#lang-toggle::before {
+    /* 使用通用的 Unicode 字符作为 Globe (地球) 图标 */
+    content: "🌐";
+    font-size: 1em;
+    margin-right: 6px;
+    opacity: 0.7;
+}
+
+#lang-toggle:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+    transform: scale(1.02);
+}
+
+#lang-toggle:hover::before {
+    opacity: 1;
+}
+
+/* 调整主题按钮与语言按钮的间距 */
+#theme-toggle {
+    margin-left: 10px;
+}
+
+
+.nav-toggle {
+    display: none; /* 桌面隐藏 */
+    margin-left: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    font-size: 1.5em;
+    padding: 5px;
+    transition: color 0.3s;
+}
+
+/* ========================================= */
+/* 2. 按钮优化 (微立体感) */
+/* ========================================= */
+.btn-group {
+    margin-top: 20px;
+}
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    margin: 10px;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    color: #fff;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 123, 255, 0.35);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.secondary-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-card-bg);
+}
+
+
+/* ========================================= */
+/* 3. 英雄区 (Hero) 强化 */
+/* ========================================= */
+.hero-section {
+    background: var(--color-background);
+    padding: 150px 0 100px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section h1 {
+    font-size: 4.5em;
+    margin-bottom: 25px;
+    font-weight: 900;
+    line-height: 1.15;
+    max-width: 900px;
+    /* 现代渐变标题 */
+    background: linear-gradient(90deg, var(--color-text) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+}
+
+.hero-section p {
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    max-width: 700px;
+    opacity: 0.7;
+    opacity: 0;
+}
+
+/* 英雄区抽象视觉元素 */
+.hero-visual {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at center, rgba(0, 123, 255, 0.1), transparent 70%);
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+/* ========================================= */
+/* 4. 通用区段与卡片设计 (实现无缝过渡) */
+/* ========================================= */
+section {
+    padding: 100px 0;
+    text-align: center;
+    background-color: var(--color-background);
+}
+
+/* 移除 bg-light 样式，统一背景 */
+.bg-light {
+    background-color: var(--color-background);
+}
+
+section h2 {
+    font-size: 3em;
+    margin-bottom: 60px;
+    color: var(--color-text);
+    font-weight: 800;
+}
+
+/* 卡片容器 */
+.feature-grid, .advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.feature-item, .advantage-item {
+    background: var(--color-card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px var(--color-shadow);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+    text-align: left;
+    border: 1px solid rgba(0, 123, 255, 0.05);
+    opacity: 0;
+}
+
+.feature-item:hover, .advantage-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.icon-placeholder {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+.feature-item h3, .advantage-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.feature-item p, .advantage-item p {
+    opacity: 0.8;
+}
+
+/* ========================================= */
+/* 5. 项目状态区样式 */
+/* ========================================= */
+.status-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.status-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 20px var(--color-shadow);
+    background-color: var(--color-card-bg);
+    opacity: 0;
+}
+
+.status-content p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: left;
+    color: var(--color-text);
+}
+
+.status-content strong {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.status-content .btn {
+    margin-top: 20px;
+}
+
+
+/* 底部联系 (Contact) - 保持渐变作为呼吁行动 (CTA) 的视觉焦点 */
+.contact-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: 120px 0;
+    color: #fff;
+}
+
+.contact-section h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.contact-section .btn {
+    color: #fff;
+    border-color: #fff;
+}
+.contact-section .secondary-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.contact-section .secondary-btn:hover {
+    background-color: #fff;
+    color: var(--color-primary);
+}
+
+
+/* 底部 Footer */
+footer {
+    /* 使用修正后的变量，实现亮色/暗色跟随 */
+    background: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+
+/* ========================================= */
+/* 6. 动画与可见性 */
+/* ========================================= */
+
+/* 滚动动画基类 */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ========================================= */
+/* 7. 响应式调整 */
+/* ========================================= */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 3.5em;
+    }
+    .hero-visual {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 导航调整 */
+    nav {
+        display: none;
+        width: 100%;
+        order: 4;
+        margin-top: 15px;
+    }
+    nav.active {
+        display: block;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        background: var(--color-card-bg);
+        padding: 15px 0;
+        border-radius: var(--border-radius);
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* 头部布局调整 */
+    header .container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .logo {
+        flex-grow: 1;
+    }
+    .nav-toggle {
+        display: block;
+        order: 3;
+    }
+    .nav-btn {
+        order: 2;
+        margin-left: 10px;
+    }
+
+    /* 英雄区调整 */
+    .hero-section {
+        text-align: center;
+        padding: 100px 0;
+    }
+    .hero-section h1 {
+        font-size: 2.5em;
+        text-align: center;
+    }
+    .hero-section p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .feature-item, .advantage-item {
+        text-align: center;
+    }
+    .icon-placeholder {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2em;
+    }
+    .btn {
+        display: block;
+        width: 100%;
+    }
+}

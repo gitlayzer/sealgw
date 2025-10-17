@@ -1,0 +1,53 @@
+{
+  "page_title": "Sealgw - Cloud-Native High-Performance 4/7 Layer Gateway (In Dev)",
+  "lang_code": "EN",
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "design_concept": "Design Concept",
+    "status": "Project Status",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Cloud-Native High-Performance 4/7 Layer Hybrid Gateway",
+    "subtitle": "Sealgw (In Development) is built for the Sealos platform, unifying your traffic with extreme security and kernel-level speed.",
+    "docs_btn": "View Development Docs",
+    "repo_btn": "GitHub Repo"
+  },
+  "features": {
+    "title": "Core Features: Performance and Security",
+    "f1_title": "4/7 Layer Hybrid Proxy",
+    "f1_desc": "Utilizes high-performance LVS for Layer 4 proxying, complemented by robust Layer 7 routing, authentication, and API governance.",
+    "f2_title": "Extreme Security Protection",
+    "f2_desc": "Native support for WAF, DDoS mitigation, and mandatory TLS/SSL termination, building the first line of defense at the gateway.",
+    "f3_title": "Unified API Governance",
+    "f3_desc": "Provides dynamic rate limiting, circuit breaking, and request rewriting for fine-grained control over all services on Sealos.",
+    "f4_title": "High Availability Design",
+    "f4_desc": "Deep integration of the `lvscare` mechanism ensures continuous high availability for the gateway entry point and backend Real Server lists."
+  },
+  "advantages": {
+    "title": "Sealgw Design Philosophy",
+    "a1_title": "Performance First",
+    "a1_desc": "From the underlying LVS selection to the upper-layer proxy implementation, all design aims for minimal latency and maximum throughput.",
+    "a2_title": "Cloud-Native Management",
+    "a2_desc": "Configuration is fully declarative, managed via Kubernetes API for seamless GitOps integration.",
+    "a3_title": "Ecosystem Integration",
+    "a3_desc": "Deeply integrated with Sealos platform modules like storage, monitoring, and authentication, reducing operational complexity."
+  },
+  "status": {
+    "title": "Project Status and Roadmap",
+    "phase": "<strong>Current Phase:</strong> Core functionality development, focusing on the stability and performance testing of the LVS + L7 core proxy logic.",
+    "short_term": "<strong>Short-Term Goal:</strong> Complete basic 4/7 layer routing, TLS termination, and fundamental lvscare high-availability integration.",
+    "contribute": "<strong>Get Involved:</strong> We welcome all community developers to contribute code, provide feedback, and participate in architecture design. Join our GitHub community!",
+    "roadmap_btn": "View Roadmap / Contribute"
+  },
+  "contact": {
+    "title": "Contact Us, Build the Future",
+    "subtitle": "Have questions about the project, want to contribute, or discuss technical topics?",
+    "bug_report": "Report Bug / Suggest Feature",
+    "email_us": "Email Us"
+  },
+  "footer": {
+    "copyright": "&copy; 2025 Sealgw. A Sealos Module. All rights reserved."
+  }
+}

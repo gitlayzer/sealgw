@@ -1,0 +1,53 @@
+{
+  "page_title": "Sealgw - 云原生高性能 4/7 层网关 (开发中)",
+  "lang_code": "中文",
+  "nav": {
+    "home": "首页",
+    "features": "核心特性",
+    "design_concept": "设计理念",
+    "status": "项目状态",
+    "contact": "联系"
+  },
+  "hero": {
+    "title": "云原生高性能 4/7 层混合网关",
+    "subtitle": "Sealgw (开发中) —— 为 Sealos 平台构建，以极致安全和内核级速度，统一您的南北向和东西向流量。",
+    "docs_btn": "查看开发文档",
+    "repo_btn": "GitHub Repo"
+  },
+  "features": {
+    "title": "核心特性：性能与安全并重",
+    "f1_title": "4/7 层混合代理",
+    "f1_desc": "底层基于高性能 LVS 实现四层代理，上层提供强大的七层路由、认证和 API 治理能力。",
+    "f2_title": "极致安全防护",
+    "f2_desc": "原生支持 WAF、DDoS 缓解、TLS/SSL 强制终止，网关层为应用构建第一道防线。",
+    "f3_title": "统一 API 治理",
+    "f3_desc": "提供动态限流、熔断和请求重写能力，对 Sealos 上的所有服务进行精细化控制。",
+    "f4_title": "高可用设计",
+    "f4_desc": "深度集成 `lvscare` 机制，确保网关入口和后端 Real Server 列表的持续高可用。"
+  },
+  "advantages": {
+    "title": "Sealgw 设计理念",
+    "a1_title": "性能优先",
+    "a1_desc": "从底层 LVS 选型到上层代理实现，一切设计都以提供最小延迟和最大吞吐量为目标。",
+    "a2_title": "云原生管理",
+    "a2_desc": "配置完全声明式，通过 Kubernetes API 管理",
+    "a3_title": "生态集成",
+    "a3_desc": "与 Sealos 平台内的存储、监控、认证等模块深度融合，减少运维复杂性。"
+  },
+  "status": {
+    "title": "项目状态与路线图",
+    "phase": "<strong>当前阶段：</strong>核心功能开发中，主要聚焦于 LVS + L7 核心代理逻辑的稳定性和性能测试。",
+    "short_term": "<strong>短期目标：</strong>完成基础的 4/7 层路由、TLS 终止和基本的 lvscare 高可用集成。",
+    "contribute": "<strong>欢迎参与：</strong>我们欢迎所有社区开发者贡献代码、提供反馈和参与架构设计。加入我们的 GitHub 社区，共同塑造 Sealgw 的未来！",
+    "roadmap_btn": "查看 Roadmap / 贡献"
+  },
+  "contact": {
+    "title": "联系我们，共建未来",
+    "subtitle": "对项目有疑问、想要参与贡献或技术交流？",
+    "bug_report": "报告 Bug / 提建议",
+    "email_us": "联系我们"
+  },
+  "footer": {
+    "copyright": "&copy; 2025 Sealgw. A Sealos Module. All rights reserved."
+  }
+}

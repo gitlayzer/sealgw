@@ -36,7 +36,6 @@
                 <li class="nav-item"><a href="#architecture" class="nav-link" data-i18n="nav.architecture">架构设计</a></li>
                 <li class="nav-item"><a href="#performance" class="nav-link" data-i18n="nav.performance">性能指标</a></li>
                 <li class="nav-item"><a href="#connection-flow" class="nav-link" data-i18n="nav.demo">连接演示</a></li>
-                <li class="nav-item"><a href="#config-generator" class="nav-link" data-i18n="nav.generator">配置生成器</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link" data-i18n="nav.contact">联系</a></li>
             </ul>
         </nav>
@@ -718,91 +717,6 @@
         </div>
     </section>
 
-    <!-- Config Generator Section -->
-    <section id="config-generator" class="config-generator-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="config.title">LVSCare 配置生成器</h2>
-                <p class="section-subtitle" data-i18n="config.subtitle">交互式工具，快速生成 LVSCare 配置文件，支持多种负载均衡算法</p>
-            </div>
-
-            <div class="config-workspace">
-                <div class="config-form">
-                    <div class="form-section">
-                        <h3 data-i18n="config.basic_settings">基础设置</h3>
-                        <div class="form-group">
-                            <label for="vip-input" data-i18n="config.vip">虚拟 IP 地址</label>
-                            <input type="text" id="vip-input" placeholder="192.168.1.100" value="192.168.1.100">
-                        </div>
-                        <div class="form-group">
-                            <label for="port-input" data-i18n="config.port">端口</label>
-                            <input type="number" id="port-input" placeholder="80" value="80">
-                        </div>
-                        <div class="form-group">
-                            <label for="algorithm-select" data-i18n="config.algorithm">负载均衡算法</label>
-                            <select id="algorithm-select">
-                                <option value="rr" data-i18n="config.algo_rr">轮询 (Round Robin)</option>
-                                <option value="wrr" data-i18n="config.algo_wrr">加权轮询 (Weighted Round Robin)</option>
-                                <option value="lc" data-i18n="config.algo_lc">最少连接 (Least Connections)</option>
-                                <option value="wlc" data-i18n="config.algo_wlc">加权最少连接 (Weighted Least Connections)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3 data-i18n="config.health_check">健康检查</h3>
-                        <div class="form-group">
-                            <label for="check-interval" data-i18n="config.check_interval">检查间隔</label>
-                            <input type="number" id="check-interval" placeholder="5" value="5">
-                            <span class="unit">秒</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="check-timeout" data-i18n="config.check_timeout">检查超时</label>
-                            <input type="number" id="check-timeout" placeholder="3" value="3">
-                            <span class="unit">秒</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="retries" data-i18n="config.retries">重试次数</label>
-                            <input type="number" id="retries" placeholder="3" value="3">
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3 data-i18n="config.backend_servers">后端服务器</h3>
-                        <div id="backend-servers">
-                            <div class="server-input-group">
-                                <input type="text" class="server-ip" id="server-ip-1" placeholder="192.168.1.10" aria-label="服务器IP">
-                                <input type="number" class="server-port" id="server-port-1" placeholder="80" value="80" aria-label="服务器端口">
-                                <input type="number" class="server-weight" id="server-weight-1" placeholder="100" value="100" aria-label="服务器权重">
-                                <button class="remove-server" style="display:none;" aria-label="删除服务器">✕</button>
-                            </div>
-                        </div>
-                        <button class="add-server-btn" id="add-backend-server" aria-label="添加服务器">+ 添加服务器</button>
-                    </div>
-
-                    <div class="form-actions">
-                        <button class="btn-primary" id="generate-config" data-i18n="config.generate">生成配置</button>
-                        <button class="btn-secondary" id="download-config" data-i18n="config.download">下载配置文件</button>
-                        <button class="btn-secondary" id="copy-config" data-i18n="config.copy">复制配置</button>
-                    </div>
-                </div>
-
-                <div class="config-output">
-                    <div class="output-header">
-                        <h3 data-i18n="config.generated_config">生成的配置</h3>
-                        <div class="format-tabs">
-                            <button class="format-tab active" data-format="yaml">YAML</button>
-                            <button class="format-tab" data-format="json">JSON</button>
-                            <button class="format-tab" data-format="shell">Shell</button>
-                        </div>
-                    </div>
-                    <div class="config-content">
-                        <pre id="config-preview"><code># 点击"生成配置"按钮来创建您的 LVSCare 配置文件</code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Project Status Section -->
     <section id="status" class="status-section">

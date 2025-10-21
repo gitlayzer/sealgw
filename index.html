@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="img/favicon.ico" type="image/svg+xml">
 </head>
-<body data-theme="light">
+<body data-theme="redblack" data-theme-mode="light">
     <div class="global-background">
         <div class="floating-shapes">
             <div class="shape shape-1"></div>
@@ -789,6 +789,64 @@
     </section>
 </main>
 
+<!-- 主题切换器 -->
+<div class="theme-switcher">
+    <button class="theme-toggle-btn" id="theme-switcher-btn" aria-label="主题切换器">
+        <span class="theme-icon">🎨</span>
+    </button>
+
+    <div class="theme-selector" id="theme-selector">
+        <div class="theme-selector-header">
+            <h3>选择主题</h3>
+        </div>
+        <div class="theme-options">
+            <div class="theme-option active" data-theme="redblack">
+                <div class="theme-preview redblack-preview">
+                    <div class="preview-dot red-black"></div>
+                    <div class="preview-bg"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-name">红黑经典</div>
+                    <div class="theme-desc">经典黑红配色</div>
+                </div>
+            </div>
+
+            <div class="theme-option" data-theme="deepblue">
+                <div class="theme-preview deepblue-preview">
+                    <div class="preview-dot deep-blue"></div>
+                    <div class="preview-bg"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-name">深空蓝</div>
+                    <div class="theme-desc">现代科技蓝</div>
+                </div>
+            </div>
+
+            <div class="theme-option" data-theme="greenblue">
+                <div class="theme-preview greenblue-preview">
+                    <div class="preview-dot green-blue"></div>
+                    <div class="preview-bg"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-name">绿蓝清新</div>
+                    <div class="theme-desc">极简绿蓝风</div>
+                </div>
+            </div>
+
+            <div class="theme-option" data-theme="purplegold">
+                <div class="theme-preview purplegold-preview">
+                    <div class="preview-dot purple-gold"></div>
+                    <div class="preview-bg"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-name">紫金优雅</div>
+                    <div class="theme-desc">高端紫金色</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer class="modern-footer">
     <div class="footer-container">
         <div class="footer-content">
@@ -821,5 +879,6 @@
 </footer>
 
 <script src="script-simple.js"></script>
+<script src="theme-switcher.js"></script>
 </body>
 </html>

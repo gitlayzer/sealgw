@@ -796,7 +796,7 @@ class SimpleSealgwApp {
             position: fixed;
             width: 60px;
             height: 40px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9));
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
             border: 2px solid rgba(255, 255, 255, 0.8);
             border-radius: 8px;
             display: flex;
@@ -997,7 +997,7 @@ class SimpleSealgwApp {
                     position: fixed;
                     width: 4px;
                     height: 4px;
-                    background: rgba(139, 92, 246, 0.6);
+                    background: var(--color-primary);
                     border-radius: 50%;
                     z-index: 999;
                     pointer-events: none;

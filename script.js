@@ -24,6 +24,12 @@ const CONFIG = {
 
     // 主题配置
     THEMES: {
+        REDBLACK: 'redblack',
+        DEEPBLUE: 'deepblue',
+        GREENBLUE: 'greenblue',
+        PURPLEGOLD: 'purplegold',
+
+        // 主题模式（亮/暗）
         LIGHT: 'light',
         DARK: 'dark'
     },
@@ -38,7 +44,8 @@ const CONFIG = {
 // 应用状态
 const AppState = {
     currentLanguage: CONFIG.DEFAULT_LANGUAGE,
-    currentTheme: CONFIG.THEMES.LIGHT,
+    currentTheme: CONFIG.THEMES.REDBLACK,
+    currentThemeMode: CONFIG.THEMES.LIGHT,
     isMenuOpen: false,
     scrollY: 0,
     isScrolling: false
@@ -338,23 +345,35 @@ class I18nManager {
 class ThemeManager {
     constructor() {
         this.currentTheme = AppState.currentTheme;
+        this.currentThemeMode = AppState.currentThemeMode;
         this.themes = CONFIG.THEMES;
     }
 
     /**
      * 设置主题
      */
-    setTheme(theme) {
-        if (!Object.values(this.themes).includes(theme)) {
+    setTheme(theme, themeMode = this.currentThemeMode) {
+        // 验证主题是否有效
+        const validThemes = [this.themes.REDBLACK, this.themes.DEEPBLUE, this.themes.GREENBLUE, this.themes.PURPLEGOLD];
+        if (!validThemes.includes(theme)) {
             console.warn(`Invalid theme: ${theme}`);
             return;
         }
 
+        // 验证主题模式是否有效
+        if (!Object.values(this.themes).includes(themeMode)) {
+            console.warn(`Invalid theme mode: ${themeMode}`);
+            return;
+        }
+
         this.currentTheme = theme;
+        this.currentThemeMode = themeMode;
         AppState.currentTheme = theme;
+        AppState.currentThemeMode = themeMode;
 
         // 应用主题到 body
         document.body.setAttribute('data-theme', theme);
+        document.body.setAttribute('data-theme-mode', themeMode);
 
         // 更新主题切换按钮
         this.updateThemeToggle();
@@ -362,24 +381,35 @@ class ThemeManager {
         // 保存用户偏好（带错误处理）
         try {
             localStorage.setItem('sealgw-theme', theme);
+            localStorage.setItem('sealgw-theme-mode', themeMode);
         } catch (error) {
             console.log('localStorage not available, skipping theme save');
         }
 
         // 触发主题变更事件
         document.dispatchEvent(new CustomEvent('themechange', {
-            detail: { theme }
+            detail: { theme, themeMode }
         }));
+    }
+
+    /**
+     * 切换主题模式（亮/暗）
+     */
+    toggleThemeMode() {
+        const nextThemeMode = this.currentThemeMode === this.themes.LIGHT
+            ? this.themes.DARK
+            : this.themes.LIGHT;
+        this.setTheme(this.currentTheme, nextThemeMode);
     }
 
     /**
      * 切换主题
      */
     toggleTheme() {
-        const nextTheme = this.currentTheme === this.themes.LIGHT
+        const nextThemeMode = this.currentThemeMode === this.themes.LIGHT
             ? this.themes.DARK
             : this.themes.LIGHT;
-        this.setTheme(nextTheme);
+        this.setTheme(this.currentTheme, nextThemeMode);
     }
 
     /**
@@ -388,8 +418,11 @@ class ThemeManager {
     updateThemeToggle() {
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
-            themeToggle.textContent = this.currentTheme === this.themes.DARK ? '☀️' : '🌙';
+            themeToggle.textContent = this.currentThemeMode === this.themes.DARK ? '☀️' : '🌙';
         }
+
+        // 更新主题选择器
+        this.updateThemeSelector();
     }
 
     /**
@@ -398,21 +431,94 @@ class ThemeManager {
     init() {
         const userPrefs = Utils.getUserPreferences();
         let savedTheme = null;
+        let savedThemeMode = null;
 
         // 安全地检查保存的主题偏好
         try {
             savedTheme = localStorage.getItem('sealgw-theme');
+            savedThemeMode = localStorage.getItem('sealgw-theme-mode');
         } catch (error) {
             console.log('localStorage not available for theme');
         }
 
-        if (savedTheme && Object.values(this.themes).includes(savedTheme)) {
-            this.setTheme(savedTheme);
-        } else if (userPrefs.prefersDarkMode) {
-            this.setTheme(this.themes.DARK);
-        } else {
-            this.setTheme(this.themes.LIGHT);
+        // 加载保存的主题和主题模式
+        const validThemes = [this.themes.REDBLACK, this.themes.DEEPBLUE, this.themes.GREENBLUE, this.themes.PURPLEGOLD];
+        const theme = validThemes.includes(savedTheme) ? savedTheme : this.themes.REDBLACK;
+
+        const validThemeModes = [this.themes.LIGHT, this.themes.DARK];
+        let themeMode = validThemeModes.includes(savedThemeMode) ? savedThemeMode : this.themes.LIGHT;
+
+        // 如果用户偏好暗色模式，应用暗色主题模式
+        if (userPrefs.prefersDarkMode && !savedThemeMode) {
+            themeMode = this.themes.DARK;
         }
+
+        this.setTheme(theme, themeMode);
+    }
+
+    /**
+     * 更新主题选择器
+     */
+    updateThemeSelector() {
+        const themeOptions = document.querySelectorAll('.theme-option');
+        themeOptions.forEach(option => {
+            const optionTheme = option.getAttribute('data-theme');
+            if (optionTheme === this.currentTheme) {
+                option.classList.add('active');
+            } else {
+                option.classList.remove('active');
+            }
+        });
+    }
+
+    /**
+     * 设置主题切换器可见性
+     */
+    setThemeSelectorVisible(visible) {
+        const selector = document.getElementById('theme-selector');
+        if (selector) {
+            if (visible) {
+                selector.classList.add('show');
+            } else {
+                selector.classList.remove('show');
+            }
+        }
+    }
+
+    /**
+     * 初始化主题切换器
+     */
+    initThemeSwitcher() {
+        const switcherBtn = document.getElementById('theme-switcher-btn');
+        const selector = document.getElementById('theme-selector');
+
+        // 主题切换器按钮点击事件
+        if (switcherBtn) {
+            switcherBtn.addEventListener('click', () => {
+                const isVisible = selector && selector.classList.contains('show');
+                this.setThemeSelectorVisible(!isVisible);
+            });
+        }
+
+        // 主题选项点击事件
+        const themeOptions = document.querySelectorAll('.theme-option');
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.getAttribute('data-theme');
+                this.setTheme(theme, this.currentThemeMode);
+                this.setThemeSelectorVisible(false);
+            });
+        });
+
+        // 点击外部关闭主题选择器
+        document.addEventListener('click', (e) => {
+            if (selector && selector.classList.contains('show')) {
+                const isClickInsideSwitcher = e.target.closest('.theme-switcher');
+                if (!isClickInsideSwitcher) {
+                    this.setThemeSelectorVisible(false);
+                }
+            }
+        });
     }
 }
 
@@ -759,6 +865,9 @@ class SealgwApp {
 
         // 2. 初始化主题
         this.themeManager.init();
+
+        // 2.1. 初始化主题切换器
+        this.themeManager.initThemeSwitcher();
 
         // 3. 绑定基本事件
         this.bindBasicEvents();

@@ -6,9 +6,7 @@
     "features": "Features",
     "architecture": "Architecture",
     "performance": "Performance",
-    "lvscare": "LVSCare Monitor",
     "demo": "Connection Demo",
-    "generator": "Config Generator",
     "status": "Project Status",
     "contact": "Contact"
   },
@@ -31,13 +29,13 @@
     "title": "Core Features: Performance and Security",
     "subtitle": "Enterprise-grade gateway solution providing powerful traffic management for modern cloud-native applications",
     "f1_title": "4/7 Layer Hybrid Proxy",
-    "f1_desc": "Utilizes high-performance LVS for Layer 4 proxying, complemented by robust Layer 7 routing, authentication, and API governance.",
+    "f1_desc": "Built with Go language self-developed high-performance TCP/UDP proxy engine, complemented by robust Layer 7 routing, authentication, and API governance.",
     "f2_title": "Extreme Security Protection",
     "f2_desc": "Native support for WAF, DDoS mitigation, and mandatory TLS/SSL termination, building the first line of defense at the gateway.",
     "f3_title": "Unified API Governance",
     "f3_desc": "Provides dynamic rate limiting, circuit breaking, and request rewriting for fine-grained control over all services on Sealos.",
     "f4_title": "High Availability Design",
-    "f4_desc": "Deep integration of the `lvscare` mechanism ensures continuous high availability for the gateway entry point and backend Real Server lists."
+    "f4_desc": "Self-developed high availability mechanism ensures continuous high availability for the gateway entry point and backend service lists."
   },
   "architecture": {
     "title": "Architecture Design",
@@ -59,7 +57,7 @@
     "phase_desc": "Focusing on stability and performance testing of LVS + L7 core proxy logic",
     "phase": "<strong>Current Phase:</strong> Core functionality development, focusing on the stability and performance testing of the LVS + L7 core proxy logic.",
     "short_term_title": "Short-term Goals",
-    "short_term": "Complete basic 4/7 layer routing, TLS termination, and fundamental lvscare high-availability integration",
+    "short_term": "Complete basic 4/7 layer routing, TLS termination, and self-developed high-availability mechanism",
     "contribute": "<strong>Get Involved:</strong> We welcome all community developers to contribute code, provide feedback, and participate in architecture design. Join our GitHub community!",
     "roadmap_btn": "View Roadmap / Contribute"
   },
